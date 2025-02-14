@@ -1,10 +1,12 @@
 // Create a server that serve an index request
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const PORT = 8000
 
 //create a get request on the api page 
 
+app.use(cors())
 const rappers = {
     'skepta' : {
         'birthName' : 'Joseph Junior Adenuga',
@@ -121,8 +123,8 @@ app.get('/', (request,response) => {
 app.get('/api/:name',(request,response)=>{
     const rapperName = request.params.name.toLowerCase()
     if(rappers[rapperName]){
-        console.log(rappers[rapperName].birthName)
-        response.json(rappers)
+        console.log(rappers)
+        response.json(rappers[rapperName])
     }
     else{
         response.json(rappers[others])

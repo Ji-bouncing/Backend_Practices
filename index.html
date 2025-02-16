@@ -8,9 +8,11 @@
 <body>
     <h1>Rap Names Api</h1>
     <p>Please use localhost:8000/api/rapper-name</p>
-    <form>
-        <input type="text" placeholder="Please Enter Rapper Name">
-        <button type="button" id="check">Check For Info</button>
+
+    <form method="post" action='/addRapper'>
+        <input type="text" placeholder="Please Enter stage Name" name="stageName">
+        <input type="text" placeholder="Please Enter Rapper BirthNAme" name="stageName">
+        <button type="submit" id="check">Check For Info</button>
     </form>
     <div>
         <p id="insertInfo"></p>

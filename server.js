@@ -1,12 +1,6 @@
-// Create a server that serve an index request
 const express = require('express')
 const app = express()
-const cors = require('cors')
 const PORT = 8000
-
-//create a get request on the api page 
-
-app.use(cors())
 const rappers = {
     'skepta' : {
         'birthName' : 'Joseph Junior Adenuga',
@@ -120,21 +114,18 @@ app.get('/', (request,response) => {
     response.sendFile(__dirname + '/index.html')
 })
 
-app.get('/api/:name',(request,response)=>{
-    const rapperName = request.params.name.toLowerCase()
-    if(rappers[rapperName]){
-        console.log(rappers)
-        response.json(rappers[rapperName])
-    }
-    else{
-        response.json(rappers[others])
-    }
-    
+app.get('/api/:name', (request,response) => {
+        const rapperName = request.params.name.toLowerCase()
+        if(rappers[rapperName]){
+            response.json(rappers[rapperName])
+            console.log(rappers[rapperName])
+        }
+        else{
+                response.json(rappers['others'])
+        }
 })
-
 
 app.listen(process.env.PORT || PORT, () => {
-    console.log(`The server is running on PORT ${PORT} You better go catch it`)
+    console.log(`The server is running on PORT : ${PORT}`)
 })
-
 
